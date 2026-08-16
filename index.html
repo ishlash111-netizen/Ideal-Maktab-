@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UZUNITED IT - Ozodbek & Afzalbek</title>
+<link rel="icon" id="dynamic-favicon" href="uzlogo.jpg" type="image/jpeg">
+<link rel="shortcut icon" href="uzlogo.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="uzlogo.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Manrope','sans-serif'],display:['Space Grotesk','sans-serif']}}}}</script>
+<style>
+.gradient-text{background:linear-gradient(90deg,#7C3AED,#3B82F6 50%,#EC4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.gradient-bg{background:linear-gradient(135deg,#7C3AED 0%,#3B82F6 50%,#EC4899 100%)}
+.live-dot{animation:pulse 1.8s infinite}@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.7)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.glass{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.scrollbar-thin::-webkit-scrollbar{width:5px}.scrollbar-thin::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:999px}
+</style>
+</head>
+<body class="bg-[#F8F8FF] text-slate-900 antialiased">
+<!-- TOP - Admin ishora yo'q -->
+<div class="bg-black text-white text-[12px] px-4 md:px-6 py-2 flex justify-between items-center">
+  <span class="flex items-center gap-2 font-semibold"><span class="w-2 h-2 bg-green-400 rounded-full live-dot"></span> UZUNITED IT • Ozodbek & Afzalbek • online</span>
+  <span class="hidden md:inline opacity-60 text-[11px]">Toshkent • IT Park</span>
+</div>
+
+<header class="sticky top-0 z-40 bg-white/80 glass border-b">
+  <div class="max-w-[1320px] mx-auto px-4 h-[80px] flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="uzlogo.jpg" alt="UZUNITED logo" class="w-[52px] h-[52px] object-contain bg-white border rounded-[14px] shadow-sm">
+      <div><div class="font-bold text-[19px] leading-none">UZUNITED</div><div class="text-[10px] tracking-[0.2em] font-bold text-slate-500">OZODBEK × AFZALBEK</div></div>
+    </div>
+    <nav class="hidden md:flex gap-6 text-[14px] font-bold"><a href="#services">Xizmatlar</a><a href="#projects">Loyihalar</a><a href="#android-app">APK</a><a href="#contact">Aloqa</a></nav>
+    <div class="flex items-center gap-2">
+      <button id="auth-btn" onclick="openAuthModal()" class="bg-white border border-slate-200 px-4 py-2 rounded-full font-bold text-[13px] flex items-center gap-2 hover:bg-slate-50"><i class="fa-solid fa-user"></i> Tizimga kirish</button>
+      <div id="user-profile-header" class="hidden items-center gap-2 bg-slate-900 text-white px-3 py-1.5 rounded-full">
+        <img id="user-avatar" src="" class="w-6 h-6 rounded-full bg-white">
+        <span id="user-name" class="text-[12px] font-bold"></span>
+        <button onclick="logout()" class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">✕</button>
+      </div>
+      <button onclick="openChat()" class="gradient-bg text-white px-5 py-2.5 rounded-full font-bold text-[13px]">Chat</button>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-[1320px] mx-auto px-4 py-12 md:py-20 grid lg:grid-cols-2 gap-8">
+  <div>
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border text-[11px] font-bold tracking-widest"><img src="uzlogo.jpg" class="w-5 h-5 object-contain"> OZODBEK & AFZALBEK</div>
+    <h1 class="font-bold text-[38px] md:text-[56px] leading-[0.9] mt-4">G'oyani <span class="gradient-text">daromadga</span><br>aylantiramiz</h1>
+    <p class="text-slate-600 mt-4 text-[15px] leading-[1.6] max-w-[500px]">UZUNITED — IT kompaniya. Ilova, sayt, Telegram bot, backend, CRM. Buyurtma to'g'ridan Telegramga tushadi, chat ham Telegramga ulangan.</p>
+    <div class="flex gap-3 mt-6"><button onclick="openChat()" class="gradient-bg text-white px-6 py-3 rounded-full font-bold">Bepul konsultatsiya</button><a href="#projects" class="bg-white border px-6 py-3 rounded-full font-bold text-[14px]">Loyihalar</a></div>
+  </div>
+  <div class="bg-[#0B0F1E] text-white rounded-[20px] p-5 font-mono text-[13px] leading-6 border border-white/10">
+    <div class="text-white/40">// UZUNITED IT</div>
+    <div>logo = <span class="text-green-300">"./uzlogo.jpg"</span> <span class="opacity-40">// UZUNITED U logosi</span></div>
+    <div>shop_logo = <span class="text-green-300">"./shop-logo.jpg"</span> <span class="opacity-40">// UZMYSHOP sumka logosi - siz bergan yangi logo</span></div>
+    <div>founders = [<span class="text-green-300">"Ozodbek"</span>, <span class="text-green-300">"Afzalbek"</span>]</div>
+    <div class="mt-3 text-white/40">// Telegram ulangan</div>
+    <div>telegram_bot.send(order)</div>
+  </div>
+</section>
+
+<section id="services" class="bg-white border-y py-12">
+  <div class="max-w-[1320px] mx-auto px-4">
+    <h2 class="font-bold text-2xl">Xizmatlar — buyurtma Telegramga tushadi</h2>
+    <div class="grid md:grid-cols-3 gap-4 mt-6">
+      <div class="border rounded-2xl p-5"><div class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center"><i class="fa-solid fa-mobile"></i></div><div class="font-bold mt-3">Ilova</div><div class="text-[12px] text-slate-600">Flutter iOS/Android</div><button onclick="orderService('Ilova')" class="mt-3 w-full bg-black text-white py-2 rounded-full font-bold text-[11px]">Buyurtma</button></div>
+      <div class="border rounded-2xl p-5"><div class="w-9 h-9 rounded-full gradient-bg text-white flex items-center justify-center"><i class="fa-solid fa-globe"></i></div><div class="font-bold mt-3">Saytlar</div><div class="text-[12px] text-slate-600">Next.js, CRM, SaaS</div><button onclick="orderService('Saytlar')" class="mt-3 w-full gradient-bg text-white py-2 rounded-full font-bold text-[11px]">Buyurtma</button></div>
+      <div class="border rounded-2xl p-5 bg-sky-50 border-sky-200"><div class="w-9 h-9 rounded-full bg-sky-500 text-white flex items-center justify-center"><i class="fa-brands fa-telegram"></i></div><div class="font-bold mt-3">Telegram Bot</div><div class="text-[12px] text-slate-600">Avto-javob, to'lov</div><button onclick="orderService('Telegram Bot')" class="mt-3 w-full bg-sky-500 text-white py-2 rounded-full font-bold text-[11px]">Buyurtma</button></div>
+      <div class="border rounded-2xl p-5 bg-black text-white"><div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center"><i class="fa-solid fa-server"></i></div><div class="font-bold mt-3">Backend</div><div class="text-[12px] text-white/70">API, CRM, baza</div><button onclick="orderService('Backend')" class="mt-3 w-full bg-white text-black py-2 rounded-full font-bold text-[11px]">Buyurtma</button></div>
+      <div class="border rounded-2xl p-5"><div class="w-9 h-9 rounded-full bg-violet-50 text-violet-600 flex items-center justify-center"><i class="fa-solid fa-eye"></i></div><div class="font-bold mt-3">CRM + Nazorat</div><div class="text-[12px] text-slate-600">Mijoz kuzatuvi</div><button onclick="orderService('CRM + Nazorat')" class="mt-3 w-full bg-slate-900 text-white py-2 rounded-full font-bold text-[11px]">Buyurtma</button></div>
+      <div class="border rounded-2xl p-5"><div class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"><i class="fa-solid fa-robot"></i></div><div class="font-bold mt-3">AI</div><div class="text-[12px] text-slate-600">Avtomatlashtirish</div><button onclick="orderService('AI')" class="mt-3 w-full border py-2 rounded-full font-bold text-[11px]">Buyurtma</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="max-w-[1320px] mx-auto px-4 py-12">
+<h2 class="font-bold text-2xl flex items-center gap-2"><img src="shop-logo.jpg" class="w-7 h-7 object-contain rounded"> Loyihalar — kichik banerlar</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+  <!-- UZMYSHOP - YANGI LOGO BILAN, KICHIK BANER -->
+  <div class="bg-white border-2 border-violet-200 rounded-[20px] overflow-hidden flex flex-col hover:shadow-lg transition">
+    <div class="h-[110px] bg-white flex items-center justify-center p-4 border-b relative">
+      <img src="shop-logo.jpg" alt="UZMYSHOP yangi logosi - siz bergan" class="h-full object-contain">
+      <span class="absolute top-2 left-2 bg-black text-white text-[9px] px-2 py-0.5 rounded-full font-bold">LIVE</span>
+    </div>
+    <div class="p-4 flex-1 flex flex-col">
+      <div class="font-bold text-[14px]">UZMYSHOP</div>
+      <div class="text-[10px] font-bold text-violet-600">MARKETPLACE • YANGI LOGO</div>
+      <p class="text-[11px] text-slate-600 mt-1">Do'konlar, Payme/Click/Uzum. Siz bergan sumka logosi bilan.</p>
+      <div class="mt-auto pt-3 grid grid-cols-2 gap-1.5">
+        <a href="https://uzmyshop.netlify.app" target="_blank" class="bg-black text-white py-1.5 rounded-full font-bold text-[10px] text-center">Sayt</a>
+        <a href="#android-app" class="gradient-bg text-white py-1.5 rounded-full font-bold text-[10px] text-center">APK</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white border rounded-[20px] overflow-hidden flex flex-col"><div class="h-[110px] bg-gradient-to-br from-violet-500 to-blue-500"></div><div class="p-4"><div class="font-bold text-[14px]">UzLogistics CRM</div><div class="text-[11px] text-slate-600">Live tracking</div></div></div>
+
+  <div class="bg-white border rounded-[20px] overflow-hidden flex flex-col"><div class="h-[110px] bg-gradient-to-br from-pink-500 to-orange-400"></div><div class="p-4"><div class="font-bold text-[14px]">Baraka Market</div><div class="text-[11px] text-slate-600">12k+ yuklab olish</div></div></div>
+
+  <div class="bg-white border rounded-[20px] overflow-hidden flex flex-col"><div class="h-[110px] bg-white flex items-center justify-center p-4 border-b"><img src="shop-logo.jpg" class="h-full object-contain opacity-80"></div><div class="p-4"><div class="font-bold text-[14px]">UZMYSHOP Android</div><div class="text-[11px] text-slate-600">APK + yangi logo</div><a href="#android-app" class="mt-3 w-full bg-black text-white py-1.5 rounded-full font-bold text-[10px] text-center block">Yuklab olish</a></div></div>
+</div>
+</section>
+
+<section id="android-app" class="max-w-[1320px] mx-auto px-4 pb-12">
+<div class="rounded-[22px] bg-black text-white p-5 flex flex-col md:flex-row gap-4 items-center justify-between">
+  <div class="flex gap-4 items-center">
+    <img src="shop-logo.jpg" alt="APK baneri - siz bergan yangi logo" class="w-14 h-14 rounded-2xl bg-white object-contain p-2">
+    <div><div class="font-bold">UZMYSHOP APK — yangi logo bilan</div><div class="text-[12px] text-white/60">Bu rasm siz bergan yangi sumka logosi. APK ni yuklab oling.</div></div>
+  </div>
+  <a id="apk-download-btn" href="#" class="bg-white text-black px-6 py-2.5 rounded-full font-bold text-[13px] flex items-center gap-2"><i class="fa-solid fa-download"></i> APK Yuklab olish</a>
+</div>
+</section>
+
+<section id="contact" class="max-w-[1320px] mx-auto px-4 pb-16 grid lg:grid-cols-[1fr_360px] gap-4">
+  <div class="bg-white border rounded-[20px] p-6">
+    <div class="font-bold">Buyurtma — Telegramga tushadi</div>
+    <div id="form-status" class="hidden mt-3 p-3 rounded-xl text-[13px]"></div>
+    <form id="orderForm" onsubmit="handleContact(event)" class="mt-4 grid md:grid-cols-2 gap-3">
+      <input id="f-name" required placeholder="Ismingiz" class="border rounded-full px-4 py-3 text-sm">
+      <input id="f-phone" required placeholder="+998" class="border rounded-full px-4 py-3 text-sm">
+      <select id="f-service" class="border rounded-full px-4 py-3 text-sm bg-white"><option>Ilova</option><option>Saytlar</option><option>Telegram Bot</option><option>Backend</option><option>CRM + Nazorat</option></select>
+      <input id="f-budget" placeholder="Byudjet" class="border rounded-full px-4 py-3 text-sm">
+      <textarea id="f-message" required placeholder="Xabar..." class="md:col-span-2 border rounded-2xl px-4 py-3 text-sm h-24"></textarea>
+      <button id="f-submit" class="md:col-span-2 gradient-bg text-white rounded-full py-3 font-bold"><span id="f-submit-text">Yuborish — Telegramga</span></button>
+    </form>
+  </div>
+  <div class="bg-black text-white rounded-[20px] p-6"><div class="flex gap-3 items-center"><img src="uzlogo.jpg" class="w-10 h-10 rounded-xl bg-white p-1 object-contain"><div><div class="font-bold text-sm">UZUNITED</div><div class="text-[11px] opacity-60">Toshkent IT Park</div></div></div><div class="mt-4 text-sm opacity-70">uzunited@umail.uz<br>Ozodbek & Afzalbek</div></div>
+</section>
+
+
+
+<!-- EMAIL/PAROL BILAN KIRISH MODAL -->
+<div id="auth-modal" class="fixed inset-0 z-[200] hidden">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+  <div class="relative bg-white rounded-[24px] max-w-[380px] mx-auto mt-[10vh] p-6 shadow-2xl border">
+    <div class="flex justify-between items-start"><div class="w-12 h-12 rounded-2xl bg-white border flex items-center justify-center"><img src="uzlogo.jpg" class="w-8 h-8 object-contain"></div><button onclick="closeAuthModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">✕</button></div>
+    <h3 class="font-bold text-[22px] mt-4 leading-tight">Tizimga kirish</h3>
+    <p class="text-[13px] text-slate-500 mt-2 leading-[1.4]">Buyurtma va chat uchun email va parol bilan kiring.</p>
+    
+    <form id="email-auth-form" onsubmit="handleEmailAuth(event)" class="mt-5 space-y-3">
+      <input id="auth-email" type="email" required placeholder="Email — masalan: ali@gmail.com" class="w-full border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-100">
+      <input id="auth-password" type="password" required placeholder="Parol" class="w-full border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500">
+      <input id="auth-password2" type="password" placeholder="Parolni takrorlang (ro'yxatdan o'tishda)" class="w-full border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500">
+      <button type="submit" class="w-full gradient-bg text-white rounded-full py-3 font-bold text-[14px]">Kirish / Ro'yxatdan o'tish</button>
+      <div class="text-[11px] text-slate-400 text-center">Email avval ro'yxatda bo'lsa — kirish, bo'lmasa — yangi akkaunt yaratiladi</div>
+    </form>
+
+    <div id="auth-status" class="hidden mt-3 p-3 rounded-xl text-[12px] font-semibold"></div>
+  </div>
+</div>
+
+
+<!-- PROFILNI TO'LDIRISH MODAL -->
+<div id="profile-modal" class="fixed inset-0 z-[210] hidden">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="relative bg-white rounded-[24px] max-w-[420px] mx-auto mt-[8vh] p-6 shadow-2xl border max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center gap-3"><img id="profile-google-avatar" src="" class="w-12 h-12 rounded-full border"><div><div class="font-bold">Profilni to'ldiring</div><div id="profile-google-email" class="text-[11px] text-slate-500"></div></div></div>
+    <p class="text-[13px] text-slate-600 mt-4">Email bilan kirdingiz. Endi buyurtma va chat uchun profilni to'ldiring:</p>
+    <form id="profile-form" onsubmit="handleProfileSubmit(event)" class="mt-4 space-y-3">
+      <div class="grid grid-cols-2 gap-3">
+        <input id="p-firstname" required placeholder="Ism" class="border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500">
+        <input id="p-lastname" required placeholder="Familiya" class="border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500">
+      </div>
+      <input id="p-phone" required placeholder="+998 90 123 45 67" class="w-full border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500">
+      <input id="p-telegram" required placeholder="@telegram_username" class="w-full border rounded-full px-4 py-3 text-[13px] outline-none focus:border-violet-500">
+      <div class="text-[11px] text-slate-500 p-2 bg-amber-50 border border-amber-200 rounded-xl">Telegram username — masalan @Ozodbek — buyurtma holatini yuborish uchun.</div>
+      <button type="submit" class="w-full gradient-bg text-white rounded-full py-3 font-bold text-[14px]">Ro'yxatdan o'tish va davom etish</button>
+    </form>
+  </div>
+</div>
+
+<!-- TIZIMGA KIRISH TALAB QILINADI OVERLAY -->
+<div id="login-required-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[190] hidden bg-black text-white px-5 py-3 rounded-full text-[13px] font-bold shadow-xl flex items-center gap-3">
+  <i class="fa-solid fa-user text-blue-400"></i> Avval tizimga kiring <button onclick="openAuthModal()" class="bg-white text-black px-3 py-1 rounded-full text-[11px]">Kirish</button>
+</div>
+
+
+<footer class="border-t bg-white py-5 text-center text-[12px] text-slate-500"><img src="uzlogo.jpg" class="w-6 h-6 object-contain inline-block mr-2">© 2026 UZUNITED — Ozodbek & Afzalbek • Admin Ctrl+M</footer>
+
+<button onclick="toggleChat()" class="fixed bottom-5 right-5 w-[60px] h-[60px] rounded-full gradient-bg text-white shadow-lg z-50"><i id="chat-icon" class="fa-solid fa-comments"></i></button>
+<div id="chat-box" class="fixed bottom-[90px] right-5 w-[340px] h-[440px] bg-white border rounded-[20px] shadow-2xl hidden flex-col overflow-hidden z-50">
+  <div class="gradient-bg text-white p-4 flex justify-between"><div class="flex gap-2 items-center"><img src="uzlogo.jpg" class="w-7 h-7 rounded-full bg-white object-contain"><b class="text-sm">Ozodbek & Afzalbek</b></div><button onclick="toggleChat()">✕</button></div>
+  <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#FAFAFF] text-[13px]"></div>
+  <form onsubmit="sendChat(event)" class="p-3 border-t flex gap-2"><input id="chat-input" placeholder="Yozing..." class="flex-1 bg-slate-100 rounded-full px-4 py-2 text-sm outline-none"><button class="w-9 h-9 rounded-full gradient-bg text-white">➤</button></form>
+</div>
+
+<!-- ADMIN PANEL - FAQAT Ctrl+M BILAN OCHILADI, SAYTDA ISHORA YO'Q -->
+<div id="admin-overlay" class="fixed inset-0 z-[100] hidden"><div class="absolute inset-0 bg-black/60" onclick="closeAdmin()"></div><div class="relative bg-white w-full h-full max-w-[1000px] mx-auto md:m-6 md:h-[calc(100%-48px)] md:rounded-2xl overflow-hidden flex flex-col"><div class="h-12 border-b flex justify-between items-center px-4"><div class="flex items-center gap-2"><img src="uzlogo.jpg" class="w-6 h-6 object-contain"><b>ADMIN • Ctrl+M</b> <span id="admin-clock" class="text-xs opacity-50 ml-2"></span></div><button onclick="closeAdmin()" class="w-7 h-7 bg-black text-white rounded-full">✕</button></div>
+<div class="p-4 overflow-auto space-y-4">
+<!-- LOGO BOSHQARUVI - BANERLARGA QO'YISH -->
+<div class="rounded-xl bg-white border-2 border-violet-200 p-4">
+  <div class="font-bold text-[14px] flex items-center gap-2">Logo boshqaruvi — banerlarga qo'yish</div>
+  <div class="text-[11px] text-slate-500 mt-1">Bu yerdan logo yuklasangiz, darhol saytdagi barcha banerlar yangilanadi. Mijozlar yangi logoni ko'radi.</div>
+  <div class="mt-3 grid md:grid-cols-2 gap-3">
+    <div class="border rounded-xl p-3 bg-slate-50">
+      <div class="text-[11px] font-bold">Asosiy logo (UZUNITED) — uzlogo.jpg</div>
+      <img id="preview-main-logo" src="uzlogo.jpg" class="w-16 h-16 object-contain mt-2 border rounded-xl bg-white">
+      <input id="main-logo-input" type="file" accept="image/*" class="hidden">
+      <div class="mt-2 flex gap-1.5">
+        <button onclick="document.getElementById('main-logo-input').click()" class="bg-black text-white px-3 py-1.5 rounded-full text-[11px] font-bold">Tanlash</button>
+        <button onclick="uploadMainLogo()" class="gradient-bg text-white px-3 py-1.5 rounded-full text-[11px] font-bold">Banerlarga qo'yish</button>
+      </div>
+    </div>
+    <div class="border rounded-xl p-3 bg-slate-50">
+      <div class="text-[11px] font-bold">Shop logo (UZMYSHOP) — shop-logo.jpg</div>
+      <img id="preview-shop-logo" src="shop-logo.jpg" class="w-16 h-16 object-contain mt-2 border rounded-xl bg-white p-1">
+      <input id="shop-logo-input" type="file" accept="image/*" class="hidden">
+      <div class="mt-2 flex gap-1.5">
+        <button onclick="document.getElementById('shop-logo-input').click()" class="bg-black text-white px-3 py-1.5 rounded-full text-[11px] font-bold">Tanlash</button>
+        <button onclick="uploadShopLogo()" class="gradient-bg text-white px-3 py-1.5 rounded-full text-[11px] font-bold">Banerlarga qo'yish</button>
+      </div>
+    </div>
+  </div>
+  <div id="logo-upload-status" class="hidden mt-3 p-2.5 rounded-xl text-[12px] font-semibold"></div>
+</div>
+
+<!-- APK YUKLASH -->
+<div class="rounded-xl bg-black text-white p-4"><div class="font-bold text-sm flex items-center gap-2"><i class="fa-brands fa-android text-green-400"></i> APK YUKLASH</div><div class="mt-3 flex gap-2"><input id="apk-file-input" type="file" accept=".apk" class="hidden"><button onclick="document.getElementById('apk-file-input').click()" class="bg-white text-black px-4 py-2 rounded-full font-bold text-xs">APK tanlash</button><input id="apk-version-input" placeholder="v1.0.1" class="bg-white/10 border border-white/10 rounded-full px-3 py-2 text-xs flex-1"><button onclick="uploadAPK()" class="gradient-bg px-4 py-2 rounded-full font-bold text-xs">Yuklash</button></div><div id="apk-upload-status" class="hidden mt-2 p-2 rounded text-xs"></div><div id="apk-list" class="mt-2 space-y-1"></div></div>
+
+<!-- CHAT NAZORATI - ADMIN PANELGA ULANGAN -->
+<div class="rounded-xl bg-white border-2 border-sky-200 p-4">
+  <div class="font-bold text-[14px] flex items-center gap-2">Chat nazorati — Telegramga ulangan</div>
+  <div class="text-[11px] text-slate-500 mt-1">Saytdagi chatda yozilgan xabarlar shu yerda ko'rinadi. Javob yozsangiz mijozga va Telegramga boradi.</div>
+  <div id="admin-chat-list" class="mt-3 space-y-2 max-h-[200px] overflow-y-auto bg-slate-50 border rounded-xl p-3"></div>
+  <form onsubmit="adminReply(event)" class="mt-3 flex gap-2">
+    <input id="admin-reply-input" placeholder="Mijozga javob yozish... (Telegramga ham boradi)" class="flex-1 border rounded-full px-4 py-2 text-[12px] outline-none focus:border-violet-500">
+    <button class="bg-black text-white px-4 py-2 rounded-full font-bold text-[12px]">Yuborish</button>
+  </form>
+</div>
+
+<div class="grid grid-cols-3 gap-3"><div class="border rounded-xl p-3"><div class="text-[10px]">ONLAYN</div><div id="stat-online" class="font-bold">0</div></div><div class="border rounded-xl p-3"><div class="text-[10px]">TASHRIF</div><div id="stat-visits" class="font-bold">0</div></div><div class="border rounded-xl p-3"><div class="text-[10px]">VAQT</div><div id="stat-time" class="font-bold">0</div></div></div>
+
+<div class="border rounded-xl overflow-hidden"><div class="bg-slate-50 px-3 py-2 text-xs font-bold">LOG • <span id="log-count">0</span> — nima qilayotganini nazorat</div><div id="activity-log" class="max-h-[260px] overflow-auto divide-y text-xs"></div></div>
+<div id="preview-feed" class="hidden"></div><div id="preview-online" class="hidden">0</div><div id="preview-chats" class="hidden">0</div>
+</div>
+</div></div></div>
+
+<script>
+const API = 'https://lksljxmh-5000.euw.devtunnels.ms';
+let uid = localStorage.getItem('uid') || 'u_' + Math.random().toString(36).slice(2, 4);
+localStorage.setItem('uid', uid);
+let start = Date.now();
+let logs = JSON.parse(localStorage.getItem('logs') || '[]');
+let online = 12;
+let chatOpen = false;
+let authToken = localStorage.getItem('authToken') || null;
+let currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+function now() { return new Date().toLocaleTimeString(); }
+function log(t, p, d) { logs.unshift({ t, p, d, time: now(), u: uid }); if (logs.length > 150) logs.pop(); localStorage.setItem('logs', JSON.stringify(logs)); renderLogs(); }
+function renderLogs() {
+  let lc = document.getElementById('log-count'); if (lc) lc.textContent = logs.length;
+  let al = document.getElementById('activity-log'); if (al) al.innerHTML = logs.map(l => `<div class="px-3 py-1.5 flex justify-between"><span><b>${l.t}</b> ${l.d}</span><span class="opacity-50">${l.time}</span></div>`).join('');
+  let so = document.getElementById('stat-online'); if (so) so.textContent = online;
+  let sv = document.getElementById('stat-visits'); if (sv) sv.textContent = 80 + logs.length;
+  let st = document.getElementById('stat-time'); if (st) st.textContent = Math.floor((Date.now() - start) / 1000) + 's';
+}
+document.addEventListener('click', e => { let t = e.target.closest('button,a') || e.target; log('click', location.hash || 'home', (t.innerText || '').slice(0, 20)); });
+
+async function apiFetch(path, opts = {}) {
+  let headers = { ...(opts.headers || {}) };
+  if (authToken) headers['Authorization'] = 'Bearer ' + authToken;
+  let r = await fetch(API + path, { ...opts, headers });
+  return r.json();
+}
+
+async function sendToTelegram(text) {
+  try { let r = await apiFetch('/api/telegram/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) }); return r.ok; } catch (e) { return false; }
+}
+
+function orderService(s) {
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  let sel = document.getElementById('f-service');
+  if (sel) { for (let o of sel.options) { if (s.includes(o.value) || o.value.includes(s)) { sel.value = o.value; break; } } }
+  document.getElementById('f-message').focus();
+  log('click', 'service', s);
+}
+
+async function handleContact(e) {
+  e.preventDefault();
+  let name = document.getElementById('f-name').value, phone = document.getElementById('f-phone').value,
+    service = document.getElementById('f-service').value, budget = document.getElementById('f-budget').value,
+    msg = document.getElementById('f-message').value;
+  let status = document.getElementById('form-status'), btn = document.getElementById('f-submit');
+  btn.disabled = true;
+  status.className = 'mt-3 p-3 rounded-xl text-[13px] bg-amber-50 border block';
+  status.textContent = 'Yuborilmoqda...';
+  let r = await apiFetch('/api/orders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, phone, service, budget, message: msg }) });
+  if (r.ok) {
+    status.className = 'mt-3 p-3 rounded-xl text-[13px] bg-green-50 border block';
+    status.textContent = '✅ Telegramga yuborildi!';
+    openChat(); e.target.reset();
+  } else {
+    status.className = 'mt-3 p-3 rounded-xl text-[13px] bg-red-50 border block';
+    status.textContent = '❌ Xato, qayta urinib ko\'ring';
+  }
+  btn.disabled = false;
+}
+
+function sendChat(e) {
+  e.preventDefault();
+  let i = document.getElementById('chat-input');
+  if (!i.value.trim()) return;
+  let box = document.getElementById('chat-messages');
+  let txt = i.value.trim();
+  box.innerHTML += `<div class="flex justify-end"><div class="gradient-bg text-white rounded-xl px-3 py-2 max-w-[80%] text-[12px]">${txt}</div></div>`;
+  log('chat', 'chat', txt.slice(0, 20));
+  apiFetch('/api/chat/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: txt }) });
+  i.value = '';
+  box.scrollTop = box.scrollHeight;
+}
+
+// === EMAIL/PAROL BILAN KIRISH TIZIMI ===
+function isAuthenticated() { return authToken && currentUser; }
+
+function openAuthModal() { document.getElementById('auth-modal').classList.remove('hidden'); log('view', 'auth', 'Tizimga kirish modal ochildi'); }
+function closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
+function openProfileModal() {
+  document.getElementById('profile-modal').classList.remove('hidden');
+  let av = document.getElementById('profile-google-avatar');
+  let em = document.getElementById('profile-google-email');
+  if (currentUser) {
+    if (av) av.src = currentUser.picture || 'https://i.pravatar.cc/100?img=32';
+    if (em) em.textContent = currentUser.email || 'email user';
+  }
+}
+function closeProfileModal() { document.getElementById('profile-modal').classList.add('hidden'); }
+
+async function handleEmailAuth(e) {
+  e.preventDefault();
+  const email = document.getElementById('auth-email').value.trim().toLowerCase();
+  const pass = document.getElementById('auth-password').value;
+  const pass2 = document.getElementById('auth-password2').value;
+  const status = document.getElementById('auth-status');
+
+  if (!email || !pass) {
+    status.className = 'mt-3 p-3 rounded-xl text-[12px] font-semibold bg-red-50 text-red-7000 border block';
+    status.textContent = '❌ Email va parolni kiriting'; status.classList.remove('hidden'); return;
+  }
+
+  let r = await apiFetch('/api/auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, password: pass, password2: pass2 }) });
+
+  if (r.ok) {
+    authToken = r.token;
+    currentUser = r.user;
+    localStorage.setItem('authToken', authToken);
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    status.className = 'mt-3 p-3 rounded-xl text-[12px] font-semibold bg-green-50 text-green-800 border block';
+    status.textContent = r.message || '✅ Xush kelibsiz!';
+    status.classList.remove('hidden');
+    setTimeout(() => {
+      closeAuthModal();
+      if (!currentUser.profile || !currentUser.profile.phone) { openProfileModal(); }
+      updateAuthUI();
+    }, 600);
+  } else {
+    status.className = 'mt-3 p-3 rounded-xl text-[12px] font-semibold bg-red-50 text-red-700 border block';
+    status.textContent = '❌ ' + (r.error || 'Xato');
+    status.classList.remove('hidden');
+  }
+}
+
+async function handleProfileSubmit(e) {
+  e.preventDefault();
+  const first = document.getElementById('p-firstname').value.trim();
+  const last = document.getElementById('p-lastname').value.trim();
+  const phone = document.getElementById('p-phone').value.trim();
+  const tgu = document.getElementById('p-telegram').value.trim();
+  if (!first || !last || !phone || !tgu) { alert('Hamma maydonni to\'ldiring'); return; }
+  let r = await apiFetch('/api/auth/profile', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ firstname: first, lastname: last, phone, telegram: tgu }) });
+  if (r.ok) {
+    currentUser = r.user;
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    closeProfileModal();
+    updateAuthUI();
+    document.getElementById('login-required-toast').classList.add('hidden');
+    let box = document.getElementById('chat-messages');
+    if (box) {
+      box.innerHTML += `<div class="flex gap-2"><img src="uzlogo.jpg" class="w-6 h-6 rounded-full bg-white object-contain"><div class="bg-green-50 border border-green-200 rounded-xl px-3 py-2 text-[12px]">✅ Ro'yxatdan o'tdingiz! Ism: ${first} ${last}, Tel: ${phone}, TG: ${tgu}. Endi buyurtma va chat ishlaydi.</div></div>`;
+      box.scrollTop = box.scrollHeight;
+    }
+  }
+}
+
+function updateAuthUI() {
+  const authBtn = document.getElementById('auth-btn');
+  const profileHeader = document.getElementById('user-profile-header');
+  const avatar = document.getElementById('user-avatar');
+  const nameEl = document.getElementById('user-name');
+  if (isAuthenticated()) {
+    if (authBtn) authBtn.classList.add('hidden');
+    if (profileHeader) {
+      profileHeader.classList.remove('hidden');
+      profileHeader.classList.add('flex');
+      if (avatar) avatar.src = currentUser.picture || 'https://i.pravatar.cc/100?img=32';
+      if (nameEl) nameEl.textContent = (currentUser.profile && currentUser.profile.firstname) || currentUser.name || 'User';
+    }
+  } else {
+    if (authBtn) authBtn.classList.remove('hidden');
+    if (profileHeader) { profileHeader.classList.add('hidden'); profileHeader.classList.remove('flex'); }
+  }
+}
+
+function logout() {
+  if (confirm('Chiqmoqchimisiz?')) {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('currentUser');
+    authToken = null; currentUser = null;
+    updateAuthUI();
+    location.reload();
+  }
+}
+
+function requireAuth() {
+  if (!isAuthenticated()) {
+    document.getElementById('login-required-toast').classList.remove('hidden');
+    setTimeout(() => { document.getElementById('login-required-toast').classList.add('hidden'); }, 4000);
+    openAuthModal();
+    return false;
+  }
+  return true;
+}
+
+// Auth bilan o'ralgan funksiyalar
+let _oldOrderService = orderService;
+orderService = function(s) { if (!requireAuth()) return; _oldOrderService(s); }
+
+let _oldHandleContact = handleContact;
+handleContact = async function(e) {
+  if (!requireAuth()) { e.preventDefault(); return; }
+  if (currentUser && currentUser.profile) {
+    let phoneInput = document.getElementById('f-phone');
+    if (phoneInput && !phoneInput.value) phoneInput.value = currentUser.profile.phone;
+    let nameInput = document.getElementById('f-name');
+    if (nameInput && !nameInput.value) nameInput.value = currentUser.profile.firstname + ' ' + currentUser.profile.lastname;
+  }
+  return _oldHandleContact(e);
+}
+
+let _oldSendChat = sendChat;
+sendChat = function(e) { if (!isAuthenticated()) { e.preventDefault(); requireAuth(); return; } return _oldSendChat(e); }
+
+// APK
+let apkFiles = [];
+async function loadApkList() {
+  try { let r = await apiFetch('/api/apk/list'); if (r.ok) apkFiles = r.files || []; } catch (e) {}
+  renderApkList();
+}
+function renderApkList() {
+  let list = document.getElementById('apk-list'); if (!list) return;
+  if (!apkFiles.length) { list.innerHTML = '<div class="text-[11px] opacity-40 text-center py-2">Hali APK yo\'q</div>'; return; }
+  list.innerHTML = apkFiles.map((f, i) => `<div class="flex justify-between bg-white/10 border border-white/10 rounded-xl px-3 py-2 text-[11px]"><span>${f.name} v${f.version} ${f.size}</span><button onclick="deleteApk('${f.id}')" class="text-red-300">O'chirish</button></div>`).join('');
+  if (apkFiles.length) { let latest = apkFiles[0]; document.querySelectorAll('#apk-download-btn').forEach(a => { a.href = API + '/api/apk/download/' + latest.id; a.download = latest.name; }); }
+}
+async function deleteApk(id) {
+  if (!confirm('O\'chirilsinmi?')) return;
+  await apiFetch('/api/apk/' + id, { method: 'DELETE' });
+  loadApkList();
+}
+async function uploadAPK() {
+  let fi = document.getElementById('apk-file-input'), vi = document.getElementById('apk-version-input'), st = document.getElementById('apk-upload-status');
+  let f = fi.files[0];
+  if (!f) { st.className = 'mt-2 p-2 rounded bg-red-100 text-red-800 text-xs block'; st.textContent = '❌ Fayl tanlang'; st.classList.remove('hidden'); return; }
+  let fd = new FormData(); fd.append('file', f); fd.append('version', vi.value || '1.0.0');
+  st.className = 'mt-2 p-2 rounded bg-amber-100 text-amber-800 text-xs block'; st.textContent = '⏳ Yuklanmoqda...'; st.classList.remove('hidden');
+  let r = await fetch(API + '/api/apk/upload', { method: 'POST', body: fd });
+  let data = await r.json();
+  if (data.ok) {
+    st.className = 'mt-2 p-2 rounded bg-green-100 text-green-800 text-xs block';
+    st.textContent = '✅ Yuklandi: ' + f.name;
+    loadApkList(); fi.value = ''; vi.value = '';
+  } else {
+    st.className = 'mt-2 p-2 rounded bg-red-100 text-red-800 text-xs block';
+    st.textContent = '❌ Xato: ' + (data.error || 'Noma\'lum');
+  }
+}
+
+// Ctrl+M
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'm') { e.preventDefault(); openAdmin(); }
+  if (e.key === 'Escape') { closeAdmin(); if (chatOpen) toggleChat(); }
+});
+
+// Telegramdan javob olish
+async function pollTelegram() {
+  try {
+    let r = await apiFetch('/api/chat/messages');
+    if (r.ok && r.messages) {
+      let box = document.getElementById('chat-messages');
+      let existing = box ? box.children.length : 0;
+      if (box && r.messages.length > 0) {
+        let html = '';
+        for (let m of r.messages) {
+          if (m.from === 'admin') {
+            html += `<div class="flex gap-2"><img src="uzlogo.jpg" class="w-6 h-6 rounded-full bg-white object-contain"><div class="bg-violet-50 border border-violet-200 rounded-xl px-3 py-2 text-[12px]"><b class="text-[10px] text-violet-700">${m.sender_name || 'Admin'}</b><br>${m.text}</div></div>`;
+          } else {
+            html += `<div class="flex justify-end"><div class="bg-slate-100 rounded-xl px-3 py-2 max-w-[80%] text-[12px]"><b class="text-[10px] text-slate-500">${m.sender_name || 'Mijoz'}</b><br>${m.text}</div></div>`;
+          }
+        }
+        if (html) {
+          box.innerHTML += html;
+          box.scrollTop = box.scrollHeight;
+        }
+      }
+    }
+  } catch (e) {}
+}
+setInterval(pollTelegram, 4000);
+
+// Logo
+let mainLogoUrl = localStorage.getItem('mainLogoUrl');
+let shopLogoUrl = localStorage.getItem('shopLogoUrl');
+function applyLogos() {
+  if (mainLogoUrl) {
+    document.querySelectorAll('img[src="uzlogo.jpg"]').forEach(img => { if (!img.id || !img.id.includes('preview')) img.src = mainLogoUrl; });
+    let fav = document.getElementById('dynamic-favicon'); if (fav) fav.href = mainLogoUrl;
+  }
+  if (shopLogoUrl) { document.querySelectorAll('img[src="shop-logo.jpg"]').forEach(img => { if (!img.id || !img.id.includes('preview')) img.src = shopLogoUrl; }); }
+}
+async function uploadMainLogo() {
+  let inp = document.getElementById('main-logo-input'); let file = inp.files[0]; let status = document.getElementById('logo-upload-status');
+  if (!file) { status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-red-50 text-red-800 border block'; status.textContent = '❌ Fayl tanlang'; status.classList.remove('hidden'); return; }
+  status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-amber-50 text-amber-800 border block'; status.textContent = '⏳ Yuklanmoqda...'; status.classList.remove('hidden');
+  let fd = new FormData(); fd.append('file', file); fd.append('type', 'main');
+  try {
+    let r = await fetch(API + '/api/logo/upload', { method: 'POST', body: fd });
+    let data = await r.json();
+    if (data.ok) {
+      mainLogoUrl = data.url; localStorage.setItem('mainLogoUrl', mainLogoUrl);
+      document.getElementById('preview-main-logo').src = mainLogoUrl;
+      document.querySelectorAll('img[src="uzlogo.jpg"]').forEach(img => { if (!img.id || !img.id.includes('preview')) img.src = mainLogoUrl; });
+      let fav = document.getElementById('dynamic-favicon'); if (fav) fav.href = mainLogoUrl;
+      status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-green-50 text-green-800 border block';
+      status.innerHTML = '✅ Asosiy logo yangilandi!'; status.classList.remove('hidden');
+    } else {
+      status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-red-50 text-red-800 border block';
+      status.textContent = '❌ ' + (data.error || 'Xato yuz berdi'); status.classList.remove('hidden');
+    }
+  } catch(e) {
+    status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-red-50 text-red-800 border block';
+    status.textContent = '❌ Serverga ulanib bo\'lmadi: ' + e.message; status.classList.remove('hidden');
+  }
+  inp.value = '';
+}
+async function uploadShopLogo() {
+  let inp = document.getElementById('shop-logo-input'); let file = inp.files[0]; let status = document.getElementById('logo-upload-status');
+  if (!file) { status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-red-50 text-red-800 border block'; status.textContent = '❌ Fayl tanlang'; status.classList.remove('hidden'); return; }
+  status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-amber-50 text-amber-800 border block'; status.textContent = '⏳ Yuklanmoqda...'; status.classList.remove('hidden');
+  let fd = new FormData(); fd.append('file', file); fd.append('type', 'shop');
+  try {
+    let r = await fetch(API + '/api/logo/upload', { method: 'POST', body: fd });
+    let data = await r.json();
+    if (data.ok) {
+      shopLogoUrl = data.url; localStorage.setItem('shopLogoUrl', shopLogoUrl);
+      document.getElementById('preview-shop-logo').src = shopLogoUrl + '?t=' + Date.now();
+      document.querySelectorAll('img[src="shop-logo.jpg"]').forEach(img => { if (!img.id || !img.id.includes('preview')) img.src = shopLogoUrl + '?t=' + Date.now(); });
+      status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-green-50 text-green-800 border block';
+      status.innerHTML = '✅ Shop logo yangilandi!'; status.classList.remove('hidden');
+    } else {
+      status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-red-50 text-red-800 border block';
+      status.textContent = '❌ ' + (data.error || 'Xato yuz berdi'); status.classList.remove('hidden');
+    }
+  } catch(e) {
+    status.className = 'mt-3 p-2.5 rounded-xl text-xs bg-red-50 text-red-800 border block';
+    status.textContent = '❌ Serverga ulanib bo\'lmadi: ' + e.message; status.classList.remove('hidden');
+  }
+  inp.value = '';
+}
+
+// Admin chat
+function renderAdminChat() {
+  let list = document.getElementById('admin-chat-list'); if (!list) return;
+  let chatLogs = logs.filter(l => l.t === 'chat');
+  if (!chatLogs.length) { list.innerHTML = '<div class="text-[11px] opacity-40 text-center">Hali chat yo\'q</div>'; return; }
+  list.innerHTML = chatLogs.slice(0, 25).map(l => `<div class="bg-white border rounded-xl px-3 py-2 text-[11px] flex justify-between"><span><b>${l.u}</b>: ${l.d}</span><span class="opacity-50">${l.time}</span></div>`).join('');
+}
+async function adminReply(e) {
+  e.preventDefault();
+  let inp = document.getElementById('admin-reply-input'); let txt = inp.value.trim(); if (!txt) return;
+  let box = document.getElementById('chat-messages');
+  if (box) {
+    box.innerHTML += `<div class="flex gap-2"><img src="uzlogo.jpg" class="w-6 h-6 rounded-full bg-white object-contain"><div class="bg-violet-50 border border-violet-200 rounded-xl px-3 py-2 text-[12px]"><b class="text-[10px] text-violet-700">ADMIN</b><br>${txt}</div></div>`;
+    box.scrollTop = box.scrollHeight;
+  }
+  await apiFetch('/api/chat/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: txt, from_admin: true }) });
+  log('chat', 'admin-reply', 'Admin: ' + txt.slice(0, 30));
+  inp.value = ''; renderAdminChat();
+}
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  let b = document.getElementById('chat-box');
+  b.classList.toggle('hidden', !chatOpen);
+  b.classList.toggle('flex', chatOpen);
+  if (chatOpen) log('view', 'chat', 'Chat ochildi');
+}
+function openChat() { if (!chatOpen) toggleChat(); }
+function openAdmin() { document.getElementById('admin-overlay').classList.remove('hidden'); log('view', 'admin', 'Admin Ctrl+M ochildi'); }
+function closeAdmin() { document.getElementById('admin-overlay').classList.add('hidden'); }
+
+// Render
+function render() { renderLogs(); try { renderAdminChat(); } catch (e) {} try { applyLogos(); } catch (e) {} }
+
+window.addEventListener('load', () => {
+  try { updateAuthUI(); } catch (e) {}
+  log('view', 'home', 'Kirdi');
+  render();
+  setInterval(() => { online = Math.max(3, online + (Math.random() > 0.5 ? 1 : -1)); renderLogs(); }, 4000);
+  let m = document.getElementById('chat-messages');
+  if (m) m.innerHTML = `<div class="flex gap-2"><img src="uzlogo.jpg" class="w-6 h-6 rounded-full bg-white object-contain"><div class="bg-white border rounded-xl px-3 py-2 text-[12px]">Salom! Men Ozodbek. Xizmat kerakmi?</div></div>`;
+  loadApkList();
+  pollTelegram();
+  setTimeout(() => {
+    try { applyLogos(); renderAdminChat(); } catch (e) {}
+    let mi = document.getElementById('main-logo-input');
+    if (mi) mi.addEventListener('change', e => { let f = e.target.files[0]; if (f) { document.getElementById('preview-main-logo').src = URL.createObjectURL(f); } });
+    let si = document.getElementById('shop-logo-input');
+    if (si) si.addEventListener('change', e => { let f = e.target.files[0]; if (f) { document.getElementById('preview-shop-logo').src = URL.createObjectURL(f); } });
+  }, 800);
+});
+</script>
+</body>
+</html>
